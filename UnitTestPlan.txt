@@ -1,0 +1,43 @@
+# Test Plan
+
+Just some notes on what to test
+
+**Token Tests:**
+- Make sure numbers parse correctly (42, 3.14, -5)
+- Check operators work (+, -, *, /)
+- Test ToString() returns the right string
+
+**Expression Node Tests:**
+- OperandNode should return its value
+- OperatorNode should do math correctly
+- Division by zero should throw an exception
+- Parentheses should be added properly for infix
+
+## RPN Parser Tests
+
+**Happy Path:**
+- "3 4 +" → "(3 + 4)" and evaluates to 7
+- "3 4 + 2 *" → "((3 + 4) * 2)" and evaluates to 14
+- Single numbers like "42" should just return "42"
+- Decimals and negatives should work fine
+
+**Error Cases:**
+- Empty input should fail
+- Invalid tokens like "xyz" should fail
+- Not enough operands ("3 +") should fail
+- Too many operands ("3 4 5 +") should fail
+- Division by zero should throw
+
+**Edge Cases:**
+- Extra spaces and tabs should be handled
+- Very large/small numbers
+- Complex nested expressions
+
+## Test Framework
+
+Probably use MSTest since it's already set up in Visual Studio. Create separate test classes:
+- TokenTests
+- ExpressionNodeTests  
+- RPNParserTests
+
+Use parameterized tests for the repetitive stuff.
